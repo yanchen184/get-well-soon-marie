@@ -1,0 +1,463 @@
+/* Main styles for Marie's comfort website */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #ffeef8 0%, #f0f8ff 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Version display */
+.version-display {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #666;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+/* Header styles */
+.hero-section {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 20px;
+}
+
+.hero-message {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.hero-icon {
+    font-size: 3rem;
+    color: white;
+}
+
+.pulse-heart {
+    animation: pulse 2s infinite;
+}
+
+/* Section styles */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #d63384;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #ff9a9e, #fecfef);
+    border-radius: 2px;
+}
+
+/* Comfort section */
+.comfort-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.message-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.message-card {
+    background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.message-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: #ff6b9d;
+    margin-bottom: 20px;
+}
+
+.message-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #d63384;
+    margin-bottom: 15px;
+}
+
+.message-card p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Medicine section */
+.medicine-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.medicine-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.medicine-icon {
+    font-size: 4rem;
+    color: #28a745;
+    flex-shrink: 0;
+}
+
+.medicine-content h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.medicine-content p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Pill tracker */
+.pill-counter {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.pill-text {
+    font-weight: 600;
+    color: #495057;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.pill-tracker {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e9ecef;
+    border: 2px solid #dee2e6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.pill.taken {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.pill:hover {
+    transform: scale(1.1);
+}
+
+.reset-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #5a6268;
+}
+
+/* Relief section */
+.relief-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.relief-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.relief-card {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.relief-card:hover {
+    transform: translateY(-5px);
+}
+
+.relief-card i {
+    font-size: 3rem;
+    color: #1976d2;
+    margin-bottom: 20px;
+}
+
+.relief-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1565c0;
+    margin-bottom: 15px;
+}
+
+.relief-card p {
+    font-size: 1.1rem;
+    color: #424242;
+    line-height: 1.7;
+}
+
+/* Interactive section */
+.interactive-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);
+}
+
+.surprise-container {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.surprise-btn {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+}
+
+.surprise-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.6);
+}
+
+.surprise-content {
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.surprise-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.surprise-message {
+    font-size: 1.3rem;
+    color: #e65100;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/* Mood tracker */
+.mood-tracker {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mood-tracker h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.mood-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 15px;
+    padding: 20px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 80px;
+}
+
+.mood-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.mood-btn.selected {
+    background: #ffeaa7;
+    border-color: #fdcb6e;
+    color: #e17055;
+}
+
+.mood-btn i {
+    font-size: 2rem;
+}
+
+.mood-btn span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.mood-response {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #666;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mood-response.show {
+    opacity: 1;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-hearts {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.footer-hearts i {
+    margin: 0 10px;
+    animation: pulse 2s infinite;
+    animation-delay: calc(var(--i) * 0.3s);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .medicine-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .message-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mood-buttons {
+        justify-content: center;
+    }
+    
+    .mood-btn {
+        min-width: 70px;
+        padding: 15px 10px;
+    }
+}
