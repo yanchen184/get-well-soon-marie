@@ -1,0 +1,45 @@
+{
+  "name": "get-well-soon-marie",
+  "version": "1.0.0",
+  "description": "A heartwarming website to comfort and support Marie during her recovery",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "build": "echo 'Static website - no build process needed'",
+    "test": "echo 'No tests specified'",
+    "dev": "python -m http.server 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanchen184/get-well-soon-marie.git"
+  },
+  "keywords": [
+    "comfort",
+    "website",
+    "recovery",
+    "support",
+    "marie",
+    "get-well-soon",
+    "interactive",
+    "medicine-tracker",
+    "mood-tracker"
+  ],
+  "author": "yanchen184",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yanchen184/get-well-soon-marie/issues"
+  },
+  "homepage": "https://yanchen184.github.io/get-well-soon-marie/",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
