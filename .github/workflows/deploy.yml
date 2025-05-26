@@ -3,66 +3,34 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Checkout
+        uses: actions/checkout@v4
         
-    - name: Create package.json for build process
-      run: |
-        cat > package.json << EOF
-        {
-          "name": "get-well-soon-marie",
-          "version": "1.0.0",
-          "description": "A heartwarming website to comfort and support Marie during her recovery",
-          "main": "index.html",
-          "scripts": {
-            "build": "echo 'Build process completed'",
-            "test": "echo 'No tests specified'"
-          },
-          "repository": {
-            "type": "git",
-            "url": "git+https://github.com/yanchen184/get-well-soon-marie.git"
-          },
-          "keywords": ["comfort", "website", "recovery", "support"],
-          "author": "yanchen184",
-          "license": "MIT",
-          "homepage": "https://yanchen184.github.io/get-well-soon-marie/"
-        }
-        EOF
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
         
-    - name: Install dependencies
-      run: npm install
-      env:
-        CI: false
-        
-    - name: Build project
-      run: npm run build
-      env:
-        CI: false
-        
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
-        publish_branch: gh-pages
-        force_orphan: true
-        
-    - name: Update version display
-      run: |
-        echo "Deployment completed successfully!"
-        echo "Website URL: https://yanchen184.github.io/get-well-soon-marie/"
-        echo "Version: v1.0.0"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
