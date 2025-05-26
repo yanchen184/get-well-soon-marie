@@ -1,0 +1,245 @@
+/* Animation styles for Marie's comfort website */
+
+/* Keyframe animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+    }
+    33% {
+        transform: translateY(-15px) rotate(5deg);
+        opacity: 1;
+    }
+    66% {
+        transform: translateY(-10px) rotate(-3deg);
+        opacity: 0.8;
+    }
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.5;
+    }
+    25% {
+        transform: scale(1.2) rotate(45deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(0.8) rotate(90deg);
+        opacity: 0.7;
+    }
+    75% {
+        transform: scale(1.1) rotate(135deg);
+        opacity: 0.9;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -20px, 0);
+    }
+    70% {
+        transform: translate3d(0, -10px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 182, 193, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.8), 0 0 30px rgba(255, 182, 193, 0.6);
+    }
+}
+
+/* Floating hearts animation */
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-hearts i {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    animation: heartFloat 6s infinite ease-in-out;
+}
+
+.heart1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.heart2 {
+    top: 60%;
+    left: 20%;
+    animation-delay: 1s;
+}
+
+.heart3 {
+    top: 30%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.heart4 {
+    top: 70%;
+    right: 25%;
+    animation-delay: 3s;
+}
+
+.heart5 {
+    top: 45%;
+    left: 50%;
+    animation-delay: 4s;
+}
+
+/* Slide up animation class */
+.slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Star animation for surprise */
+.surprise-animation {
+    position: relative;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.surprise-animation i {
+    position: absolute;
+    font-size: 2rem;
+    color: #ffd700;
+    animation: starTwinkle 2s infinite;
+}
+
+.star1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0s;
+}
+
+.star2 {
+    top: 20px;
+    left: 30%;
+    animation-delay: 0.5s;
+}
+
+.star3 {
+    top: 20px;
+    right: 30%;
+    animation-delay: 1s;
+}
+
+/* Hover effects */
+.message-card:hover {
+    animation: glow 2s infinite;
+}
+
+.surprise-btn:active {
+    animation: bounce 0.6s;
+}
+
+.mood-btn:hover {
+    animation: shake 0.5s;
+}
+
+/* Pill animation */
+.pill.taken {
+    animation: bounce 0.6s;
+}
+
+/* Page load animations */
+.hero-section {
+    animation: fadeInScale 1s ease-out;
+}
+
+.section-title {
+    animation: slideUp 0.8s ease-out;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Animation classes */
+.animate-in {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+.version-display {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.5s ease;
+}
