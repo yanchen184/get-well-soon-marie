@@ -118,7 +118,22 @@ function showSurprise() {
     const surpriseContent = document.getElementById('surpriseContent');
     const surpriseBtn = document.querySelector('.surprise-btn');
     
+    // Array of surprise messages
+    const surpriseMessages = [
+        '你是最棒的！康復後我們一起去吃好吃的！🌟',
+        '每一天都在變好，你做得很好！💖',
+        '雖然現在辛苦，但很快就會好起來的！🌈',
+        '你的堅強讓人感動，加油！💪',
+        '想念和你一起聊天的時光，快點好起來！🥰',
+        '你的笑容是最美的風景，期待再次見到！😊',
+        '休息是為了走更遠的路，慢慢來不著急！🌸',
+        '你的勇敢讓所有人都很感動！💝',
+        '健康是最重要的財富，你正在努力找回它！🌺',
+        '每一次的呼吸都是進步，你做得很好！🌿'
+    ];
+    
     if (!surpriseShown) {
+        // First time showing surprise
         surpriseContent.classList.add('show');
         surpriseBtn.textContent = '再來一個驚喜！';
         surpriseShown = true;
@@ -129,21 +144,25 @@ function showSurprise() {
                 window.AnimationController.addSparkleEffect(surpriseContent);
             }, 300);
         }
-        
-        // Change surprise message randomly
-        const surpriseMessages = [
-            '你是最棒的！康復後我們一起去吃好吃的！🌟',
-            '每一天都在變好，你做得很好！💖',
-            '雖然現在辛苦，但很快就會好起來的！🌈',
-            '你的堅強讓人感動，加油！💪',
-            '想念和你一起聊天的時光，快點好起來！🥰'
-        ];
-        
-        const randomMessage = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
-        document.querySelector('.surprise-message').textContent = randomMessage;
     } else {
-        // Generate new surprise
-        showSurprise();
+        // Already shown, generate new surprise message
+        // Add a little animation to show the change
+        surpriseContent.style.opacity = '0.5';
+        surpriseContent.style.transform = 'scale(0.95)';
+        
+        setTimeout(() => {
+            const randomMessage = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
+            document.querySelector('.surprise-message').textContent = randomMessage;
+            
+            // Restore animation
+            surpriseContent.style.opacity = '1';
+            surpriseContent.style.transform = 'scale(1)';
+            
+            // Add sparkle effect for new surprise
+            if (window.AnimationController) {
+                window.AnimationController.addSparkleEffect(surpriseContent);
+            }
+        }, 200);
     }
 }
 

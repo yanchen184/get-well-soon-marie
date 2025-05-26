@@ -332,6 +332,11 @@ body {
     color: #e65100;
     font-weight: 600;
     margin-top: 20px;
+    transition: all 0.3s ease;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Mood tracker */
